@@ -77,7 +77,14 @@ const build=(name)=>{
 
 	dofile(folder+'palipg1.tsv',builder,);
 	dofile(folder+'palipg2.tsv',builder,true);
-	builder.done();
+
+	const extra={
+		snp:require('./snp'),
+		thag:require('./thag'),
+		thig:require('./thig'),
+		dhp:require('./dhp')
+	}
+	builder.done(null,extra);
 
 	if (outputrawtext) {
 		fs.writeFileSync(name+"-raw.txt",rawtext.join("\n"),"utf8");
